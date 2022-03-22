@@ -14,9 +14,35 @@ class Stack:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-            if temp: print("v")
+            # if temp: print("'")
 
-    # def 
+    def push(self, value):
+        new_node = Node(value)
+        if self.height == 0:
+            self.top =new_node
+        else:
+            new_node.next = self.top
+            self.top = new_node
+        self.height += 1
+        return new_node
 
-my_stack = Stack(1)
+    def pop(self):
+        if self.height == 0:
+            return None
+        temp = self.top
+        self.top = temp.next
+        temp.next = None
+        self.height -= 1
+        return temp
+
+my_stack = Stack(7)
+my_stack.push(23)
+my_stack.push(3)
+my_stack.push(1)
+my_stack.print_stack()
+my_stack.pop()
+print("\npop()")
+my_stack.print_stack()
+my_stack.pop()
+print("\npop()")
 my_stack.print_stack()
